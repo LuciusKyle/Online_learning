@@ -269,7 +269,7 @@ namespace leveldb {
 	typename SkipList<Key, Comparator>::Node*
 		SkipList<Key, Comparator>::NewNode(const Key& key, int height) {
 		char* mem = arena_->AllocateAligned(
-			sizeof(Node) + sizeof(AtomicPointer) * (height - 1));
+			sizeof(Node) + sizeof(AtomicPointer) * (height - 1)); //sizeof(AtomicPointer) * (height - 1) allocate extra space so Node::next_[some number bigger than 1 will not be invalid]
 		return new (mem) Node(key);
 	}
 

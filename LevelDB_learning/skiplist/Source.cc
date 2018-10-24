@@ -24,16 +24,18 @@ int main(void)
 	Comparator cmp;
 	leveldb::SkipList<int, Comparator> skiplist(cmp, &arena);
 
-	skiplist.Insert(1);
-	skiplist.Insert(2);
-	skiplist.Insert(3);
-	skiplist.Insert(4);
-	skiplist.Insert(5);
+	for (int i = 0; i < 0xffff; ++i) {
+		if (i == 0xfff) {
+			int temp = 0;
+		}
+		skiplist.Insert(i);
+	}
 
 	leveldb::SkipList<int, Comparator>::Iterator iter(&skiplist);
+	iter.Seek(4);
 	bool result = iter.Valid();
+
 
 	return 0;
 }
-
 
