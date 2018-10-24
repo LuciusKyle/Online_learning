@@ -440,7 +440,7 @@ namespace leveldb {
 			for (int i = GetMaxHeight(); i < height; i++) {
 				prev[i] = head_;
 			}
-			//fprintf(stderr, "Change height from %d to %d\n", max_height_, height);
+			fprintf(stderr, "Change height from %d to %d\n", max_height_, height);
 
 			// It is ok to mutate max_height_ without any synchronization
 			// with concurrent readers.  A concurrent reader that observes
